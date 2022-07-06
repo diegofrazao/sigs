@@ -99,7 +99,7 @@ class OrdersController < ApplicationController
           descontos << '10%'
         when 20..29
           descontos << '20%'
-        when order.quantidade >= 30
+        when 30..Float::INFINITY
           descontos << '30%'
         else
           descontos << '0%'
