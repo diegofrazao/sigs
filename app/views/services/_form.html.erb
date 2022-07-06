@@ -1,0 +1,30 @@
+<%= form_for @service do |form| %>
+
+  <div class="mb-3">
+    <%= form.label :descricao,"Descrição", class:"form-label" %>
+    <%= form.text_area :descricao, class:"form-control", rows:1 %>
+  </div>
+
+  <div class="input-group mb-3">
+    <%= form.label :valor, class:"form-label" %>
+    <div id="value" class="input-group">
+      <span class="input-group-text">R$</span>
+      <%= form.number_field :valor, class:"form-control", step: 0.01, placeholder: "0,00" %>
+    </div>
+    <small>Use virgulas para casas decimais</small>
+  </div>
+
+  <div class="service-actions">
+    <% if texto_da_acao == " Criar"%>
+      <%= link_to "Cancelar",
+          services_path, 
+          class: "btn btn-danger"
+      %>
+    <% else %>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+    <% end %>
+      <%= form.button texto_da_acao, class: "btn btn-success" %>
+  </div>
+  
+<% end %>
+

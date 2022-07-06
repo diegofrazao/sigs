@@ -1,0 +1,19 @@
+main section{
+  margin-top: -5rem;
+  display: grid;
+  grid-template-columns:  1fr;
+  gap: 2rem;
+}
+main section > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+main section > div:last-child{
+  display: block;
+}
+
+.card ul li.list-group-item a{
+  text-decoration: none;
+}

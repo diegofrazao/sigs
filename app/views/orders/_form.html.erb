@@ -1,0 +1,54 @@
+<%= form_for @order do |form| %>
+
+<div class="mb-3">
+    <%= form.label :service, "Serviço", class:"form-label" %>
+    <%= form.collection_select :service_id, @services, :id, :descricao, {}, class:"form-control" %>
+  </div>
+
+  <div class="input-group mb-3">
+    <%= form.label :quantidade,"Quantidade", class:"form-label" %>
+    <div id="value" class="input-group">
+      <%= form.number_field :quantidade, class:"form-control"%>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :funcionario,"Nome do Funcionário", class:"form-label" %>
+    <%= form.text_area :funcionario, class:"form-control", rows: 1%>
+  </div>
+
+  <div class="input-group mb-3">
+    <label for="date_time" class="form-label">Data e Horário</label>
+    <div id="date_time" class="input-group">
+      <div class="input-group mb-3">
+        <span class="input-group-text">Data</span>
+        <%= form.date_field :data, class:"form-control", type: "date"%>
+      </div>
+
+      <div class="input-group">
+        <span class="input-group-text">início</span>
+        <%= form.time_field :horaInicio, class:"form-control"%>
+        <span class="input-group-text">fim</span>
+        <%= form.time_field :horaFim, class:"form-control"%>
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :detalhes,"Detalhes", class:"form-label"%>
+    <%= form.text_area :detalhes, class:"form-control", rows:1 %>
+  </div>
+
+  <div class="service-actions">
+    <% if texto_da_acao == " Criar"%>
+      <%= link_to "Cancelar",
+          orders_path, 
+          class: "btn btn-danger"
+      %>
+    <% else %>
+      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+    <% end %>
+    <%= form.button texto_da_acao, class: "btn btn-success" %>
+  </div>
+
+<% end %>

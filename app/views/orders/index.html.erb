@@ -1,0 +1,57 @@
+<% @title = "Ordens de Serviço" %>
+
+<header>
+  <h1>Ordens de Serviço</h1>
+</header>
+
+<main class="container" data-turbolinks="false">
+    <section>
+    <% if notice %>
+    <% alert_class = notice.include?('successfully') ? "success" : "danger" %>
+      <div class="alert alert-<%=alert_class%>" role="alert">
+        <%= notice %> 
+      </div>
+    <% end %>
+      <div class="services-actions">
+        <%= link_to "+ Nova Ordem de serviço", new_order_path, :remote => true %></td>
+        <%= link_to raw("<i class=\"fas fa-home\"></i>"), root_path %>
+      </div>
+
+      <table class="table" id="services-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Serviço</th>
+            <th>Qtd.</th>
+            <th>Nome</th>
+            <th>Data</th>
+            <th>Iniciado</th>
+            <th>Finalizado</th>
+            <th>Detalhes</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each_with_index do |order, index| %>
+          <%index+=1%>
+            <tr>
+              <th scope="row"><%= index %></th>
+              <td><%= order.service.descricao %></td>
+              <td><%= order.quantidade %></td>
+              <td><%= order.funcionario %></td>
+              <td><%= order.data %></td>
+              <td><%= order.horaInicio.strftime("%H:%M") %></td>
+              <td><%= order.horaFim.strftime("%H:%M") %></td>
+              <td><%= order.detalhes %></td>
+              <td><%= link_to raw("<i class=\"far fa-edit\"></i>"), edit_order_path(order), :remote => true %></td>
+              <td><%= link_to raw("<i class=\"far fa-trash-alt\"></i>"), order, method: :delete, data: { confirm: "Tem certeza que deseja remover a ordem #{index}?" } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+    </div>
+</main>
+<div id="Modal" style="display:none"></div>
+

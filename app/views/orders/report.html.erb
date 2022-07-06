@@ -1,0 +1,63 @@
+<% @title = "Relatorio" %>
+
+<style>
+@media print {
+  .no-print {
+    visibility: hidden;
+  }
+  .container{
+    width: 100%;
+    max-width: 100%;
+    padding:0;
+    margin: -8rem 0 0 0;
+  }
+}
+</style>
+
+<header>
+  <h1>Relatorio de Contabilização de Serviços</h1>
+</header>
+
+<main class="container" data-turbolinks="false">
+    <section>
+      <div class="services-actions no-print">
+        <%= link_to "Atualizar", orders_report_path %></td>
+        <%= link_to raw("<i class=\"fas fa-home\"></i>"), root_path %>
+        <a href="#" onclick="window.print()">Imprimir</a>
+      </div>
+
+      <table class="table" id="services-table">
+        <thead>
+          <tr>
+            <th>Serviço</th>
+            <th>Valor Unitário</th>
+            <th>Qtd</th>
+            <th>Valor Total</th>
+            <th>Desconto</th>
+            <th>Valor Final</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @orders.each_with_index do |order, index| %>
+            <tr>
+              <td><%= order.service.descricao %></td>
+              <td>R$ <%= order.service.valor %></td>
+              <td><%= order.quantidade %></td>
+              <td>R$ <%= order.service.valor * order.quantidade %></td>
+              <td><%= @descontos[index] %></td>
+              <td>R$ <%= @valores_finais[index] %></td>
+            </tr>
+          <% end %>
+          <tr class="bold">
+            <td>TOTAL</td>
+            <td></td>
+            <td></td>
+            <td>R$ <%= @total %></td>
+            <td></td>
+            <td>R$ <%= @final %></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+</main>
+

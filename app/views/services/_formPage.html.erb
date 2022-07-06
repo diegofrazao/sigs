@@ -1,0 +1,33 @@
+<% @title = "Serviço" %>
+
+<style>
+  form {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 0.5rem;
+  }
+</style>
+
+<header>
+  <h1>Serviço</h1>
+</header>
+
+<main class="container" >
+  <%= form_with(model: service) do |form| %>
+    <% if service.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(service.errors.count, "erros") %> proíbem que este serviço seja salvo:</h2>
+
+        <ul>
+          <% service.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= render partial: "form", locals: {texto_da_acao: " Criar"}%>
+
+  <% end %>
+
+</div>

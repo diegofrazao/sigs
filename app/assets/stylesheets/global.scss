@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
+
+:root {
+  --dark-blue: #363f5f;
+  --green: #49aa26;
+  --light-green: #3dd705;
+  --red: #e92929;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  font-size: 93.25%; /* 15px */
+}
+
+body {
+  background: #f0f2f5;
+}
+
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 2rem 0 8rem;
+  text-align: center;
+
+  background: linear-gradient(45deg, #131d41, #174c64);
+}
+
+header h1{
+  color: #fff;
+}
+
+small {
+  margin-top: 0.2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 4rem 0 2rem;
+  color: var(--dark-blue);
+  opacity: 0.6;
+}
+
+.alert{
+  position: absolute;
+  top:0;
+  transform: translateY(1rem);
+  transition: all 0.2s;
+}
+
+.container{
+  margin-top: -5rem;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/* service actions */
+form > div.service-actions{
+  display: flex;
+}
+
+form > div.service-actions button:first-child{
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+form > div.service-actions a:first-child{
+  flex: 1;
+  margin-right: 0.5rem;
+}
+form > div.service-actions button:last-child{
+  flex: 1;
+  margin-left: 0.5rem;
+}
+
+.form-container .service-actions button.btn-success[type='submit'] {
+  margin-left: auto;
+}
+
+#staticBackdrop > div > div > div.modal-body > form > div.service-actions{
+  margin-left: auto;
+}
+
+table {
+  background-color: #fff;
+  /* margin-top: -4rem; */
+  padding: 0 1rem;
+  border-radius: 0.5rem;
+  border-collapse: separate;
+  border-spacing: 0 1.5rem;
+}
+
+i.far {
+  font-size: 1.3rem;
+  line-height: 0;
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+i.far:hover {
+  opacity: 1;
+}
+
+i.far.fa-edit{
+  color: #183280
+}
+
+i.far.fa-trash-alt{
+  color: var(--red)
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+.loader-wrapper {
+  z-index: 1000;
+  position: fixed;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.loader-wrapper .loader{
+  height:120px;
+  width:120px;
+  border:16px solid white;
+  border-radius: 50%;
+  border-top: 16px #131d41 solid;
+  animation: spin 1s linear infinite;
+}
+
+main section .services-actions {
+  padding-bottom: 1rem;
+  display: flex;
+}
+main section .services-actions a:first-child {
+  margin-left: 0;
+}
+main section .services-actions a {
+  margin: auto;
+}
+
+main section .services-actions a:last-child {
+  margin-right: 0;
+}
+main section .services-actions a{
+  text-decoration:none;
+}
+main section .services-actions a:hover{
+  color: white;
+}
+
+.bold {
+  font-weight: bold;
+}

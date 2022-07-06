@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @order.quantidade %>
+</p>
+
+<p>
+  <strong>Funcionario:</strong>
+  <%= @order.funcionario %>
+</p>
+
+<p>
+  <strong>Data:</strong>
+  <%= @order.data %>
+</p>
+
+<p>
+  <strong>Horainicio:</strong>
+  <%= @order.horaInicio %>
+</p>
+
+<p>
+  <strong>Horafim:</strong>
+  <%= @order.horaFim %>
+</p>
+
+<p>
+  <strong>Detalhes:</strong>
+  <%= @order.detalhes %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

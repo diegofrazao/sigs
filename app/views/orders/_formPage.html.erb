@@ -1,0 +1,32 @@
+<% @title = "Ordem de Serviço" %>
+
+<style>
+  form {
+    padding: 2rem;
+    background: #fff;
+    border-radius: 0.5rem;
+  }
+</style>
+
+<header>
+  <h1>Ordem de Serviço</h1>
+</header>
+
+<main class="container" >
+  <%= form_with(model: order) do |form| %>
+    <% if order.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+        <ul>
+          <% order.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= render partial: "form", locals: {texto_da_acao: " Criar"}%>
+    
+  <% end %>
+</div>

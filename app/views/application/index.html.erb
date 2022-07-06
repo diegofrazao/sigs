@@ -1,0 +1,115 @@
+<% @title = "Home" %>
+<%= stylesheet_link_tag 'home'%>
+
+<header>
+  <h1 id="page-title">Home</h1>
+</header>
+
+<main class="container" data-turbolinks="false">
+  <section class="cards-content">
+    
+    <div id="alert" role="alert"></div>
+    <div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Serviços</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= link_to "Adicionar Serviço", new_service_path, :remote => true %></li>
+          <li class="list-group-item"><%= link_to 'Listar Serviços', services_path %></li>
+          <li class="list-group-item"><%= link_to 'Remover Serviços', services_path %></li>
+          <li class="list-group-item"><%= link_to 'Editar Serviços', services_path %></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ordens de Serviço</h5>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= link_to "Adicionar Ordem", new_order_path, :remote => true %></li>
+          <li class="list-group-item"><%= link_to 'Listar Ordens', orders_path %></li>
+          <li class="list-group-item"><%= link_to 'Remover Ordens', orders_path %></li>
+          <li class="list-group-item"><%= link_to 'Editar Ordens', orders_path %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Relatório</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= link_to "Gerar Relatório", orders_report_path%></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<div id="Modal" style="display:none"></div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="addOrder" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modal-title">Adicionar Ordem de Serviço</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" onsubmit="Form.submit(event,'order')">
+
+            <div class="mb-3">
+              <label for="select-service" class="form-label">Serviço</label>
+              <select id="select-service" class="form-select">
+                <!-- <option selected>Open this select menu</option> -->
+              </select>
+            </div>
+            <input type="number" class="invisible" id="order_id" value="-1">
+            <div class="input-group mb-3">
+              <label for="value" class="form-label">Quantidade</label>
+              <div id="value" class="input-group">
+                <input type="number" class="form-control" id="amount" placeholder="0" required>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="employee_name" class="form-label">Nome do Funcionário</label>
+              <input type="text" class="form-control" id="employee_name" rows="1" required>
+            </div>
+
+            <div class="input-group mb-3">
+              <label for="date_time" class="form-label">Data e Horário</label>
+              <div id="date_time" class="input-group">
+
+                <div class="input-group mb-3">
+                  <span class="input-group-text">Data</span>
+                  <input id="date_" type="date" class="form-control" placeholder="07:50" aria-label="Horário de inicio"
+                    required>
+                </div>
+
+                <div class="input-group">
+                  <span class="input-group-text">início</span>
+                  <input id="start_time" type="time" class="form-control" required>
+                  <span class="input-group-text">fim</span>
+                  <input id="end_time" type="time" class="form-control" required>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="mb-3">
+              <label for="details" class="form-label">Detalhes</label>
+              <textarea class="form-control" id="details" rows="1"></textarea>
+            </div>
+
+            <div class="service-actions">
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-success" id="button-submit">Criar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

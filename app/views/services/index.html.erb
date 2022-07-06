@@ -1,0 +1,51 @@
+<% @title = "Serviços" %>
+
+<header>
+  <h1>Serviços</h1>
+</header>
+
+<main class="container" data-turbolinks="false">
+    <section>
+    <% if notice %>
+    <% alert_class = notice.include?('successfully') ? "success" : "danger" %>
+      <div class="alert alert-<%=alert_class%>" role="alert">
+        <%= notice %> 
+      </div>
+    <% end %>
+      <div class="services-actions">
+        <%= link_to "+ Novo Serviço", new_service_path, :remote => true %></td>
+
+        <%= link_to raw("<i class=\"fas fa-home\"></i>"), root_path %>
+      </div>
+
+      <table class="table" id="services-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Descrição</th>
+            <th>Valor</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @services.each_with_index do |service, index| %>
+          <%index+=1%>
+            <tr>
+              <th scope="row"><%= index %></th>
+              <td><%= service.descricao %></td>
+              <td>R$ <%= service.valor %></td>
+              <td><%= link_to raw("<i class=\"far fa-edit\"></i>"), edit_service_path(service), :remote => true %></td>
+              <td><%= link_to raw("<i class=\"far fa-trash-alt\"></i>"), service, method: :delete, data: { confirm: "Tem certeza que deseja remover o serviço #{service.descricao}?" } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </section>
+    </div>
+</main>
+
+<div id="Modal" style="display:none"></div>
+
+
+
